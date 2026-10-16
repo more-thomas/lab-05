@@ -80,4 +80,12 @@ class AStackTest{
         assertEquals(true, measureAStack(200) >= 0);
         assertEquals(false, measureAStack(100) < 0);
     }
+
+    @Test
+    public void testEquals(){
+        AStack stack1 = new AStack(new String[]{"apple", "banana"}, 2);
+        AStack stack2 = new AStack(new String[]{"apple", "banana"}, 2);
+        assertEquals(true, stack1.equals(stack2));
+
+    }
 }

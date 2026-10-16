@@ -75,7 +75,6 @@ class StackTest{
             n = n * 2;
         }
     }
-
     @Test
     public void testLLMeasurement() {
         assertEquals(true, measureLLStack(100) >= 0);
@@ -83,5 +82,13 @@ class StackTest{
         assertEquals(false, measureLLStack(100) < 0);
     }
 
+    @Test
+    public void testEquals() {
+        LLStack stack1 = new LLStack(null);
+        LLStack stack2 = new LLStack(null);
+        stack1.push("apple");
+        stack2.push("banana");
+        assertEquals(false, stack1.equals(stack2));
+    }
 
 }

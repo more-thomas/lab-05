@@ -1,57 +1,72 @@
 public class LLStack {
-    public record Stack(String one, Stack rest) {
+    public record Stack(String one, Stack rest) {}
+    Stack top;
+
+    // Purpose: Create a stack with the given top node.
+    public LLStack(Stack top) {
+        this.top = top;
     }
-        Stack top;
 
-        // Purpose: Create a stack with the given top node.
-        public LLStack(Stack top) {
-            this.top = top;
-        }
+    // Purpose: Return an empty stack.
+    public static LLStack empty_stack() {
+        return new LLStack(null);
+    }
 
-        // Purpose: Return an empty stack.
-        public static LLStack empty_stack() {
-            return new LLStack(null);
-        }
+    // Purpose: Add a String to the top of the stack.
+    public void push(String val) {
+        top = new Stack(val, top);
+    }
 
-        // Purpose: Add a String to the top of the stack.
-        public void push(String val) {
-            top = new Stack(val, top);
-        }
+    public String pop(){
+        switch(top){
+            case null: throw new IndexOutOfBoundsException("This is an empty Stack");
 
-        public String pop(){
-            switch(top){
-                case null: throw new IndexOutOfBoundsException("This is an empty Stack");
+            case Stack(String one, Stack rest):
+                top = rest;
+                return one;
+        }
+    }
+    public String peek() {
+        switch (top) {
+            case null:
+                throw new IndexOutOfBoundsException("The stack is empty");
+            case Stack(String one, Stack rest):
+                return one;
+        }
+    }
+    public int size(){
+        int tot = 0;
+        Stack current = top;
 
-                case Stack(String one, Stack rest):
-                    top = rest;
-                    return one;
-            }
+        while(current != null){
+            tot += 1;
+            current = current.rest();
         }
-        public String peek() {
-            switch (top) {
-                case null:
-                    throw new IndexOutOfBoundsException("The stack is empty");
-                case Stack(String one, Stack rest):
-                    return one;
-            }
+        return tot;
+    }
+    public boolean is_empty(){
+        if(top == null){
+            return true;
         }
-        public int size(){
-            int tot = 0;
-            Stack current = top;
+        else{
+            return false;
+        }
+    }
 
-            while(current != null){
-                tot += 1;
-                current = current.rest();
-            }
-            return tot;
-        }
-        public boolean is_empty(){
-            if(top == null){
-                return true;
-            }
-            else{
+    public boolean equals(Object other) {
+        switch (other) {
+            case null:
                 return false;
-            }
+
+            case LLStack s:
+                if (this.top == null) {
+                    return s.top == null;
+                }
+                return this.top.equals(s.top);
+
+            default:
+                return false;
         }
+    }
 
 }

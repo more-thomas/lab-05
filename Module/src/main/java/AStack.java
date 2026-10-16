@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Objects;
+
 public class AStack {
     String[] dat;
     int tot;
@@ -66,6 +68,27 @@ public class AStack {
             case 0: return true;
         }
         return false;
+    }
+
+    public boolean equals(Object other){
+        switch (other) {
+            case null:
+                return false;
+
+            case AStack s:
+                if (this.tot != s.tot) {
+                    return false;
+                }
+
+                for (int i = 0; i < this.tot; i++) {
+                    if (!Objects.equals(this.dat[i], s.dat[i])) {
+                        return false;
+                    }
+                }
+                return true;
+            default:
+                return false;
+        }
     }
 
 
