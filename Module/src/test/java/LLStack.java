@@ -77,17 +77,21 @@ class StackTest{
     }
     @Test
     public void testLLMeasurement() {
-        assertEquals(true, measureLLStack(100) >= 0);
-        assertEquals(true, measureLLStack(200) >= 0);
-        assertEquals(false, measureLLStack(100) < 0);
+        for (int t = 100; t <= 1000; t += 100) {
+            int n = measureLLStack(t);
+            assertEquals(true, n >= 0);
+            IO.println("Items: " + n + ", seconds: " + (t / 1000.0));
+        }
     }
 
     @Test
     public void testEquals() {
         LLStack stack1 = new LLStack(null);
         LLStack stack2 = new LLStack(null);
+
         stack1.push("apple");
         stack2.push("banana");
+
         assertEquals(false, stack1.equals(stack2));
     }
 

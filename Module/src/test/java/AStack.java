@@ -76,15 +76,18 @@ class AStackTest{
 
     @Test
     public void testArrayMeasurement() {
-        assertEquals(true, measureAStack(100) >= 0);
-        assertEquals(true, measureAStack(200) >= 0);
-        assertEquals(false, measureAStack(100) < 0);
+        for (int t = 100; t <= 1000; t += 100) {
+            int n = measureAStack(t);
+            assertEquals(true, n >= 0);
+            IO.println("Items: " + n + ", seconds: " + (t / 1000.0));
+        }
     }
 
     @Test
     public void testEquals(){
         AStack stack1 = new AStack(new String[]{"apple", "banana"}, 2);
         AStack stack2 = new AStack(new String[]{"apple", "banana"}, 2);
+
         assertEquals(true, stack1.equals(stack2));
 
     }
