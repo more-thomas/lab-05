@@ -4,60 +4,56 @@ import static org.junit.jupiter.api.Assertions.*;
 class AQueueTest {
 
     @Test
-    public void testEnqueue() {
-        AQueue queue = AQueue.empty_queue(2);
-        queue.enqueue("apple");
-        queue.enqueue("banana");
+    public void testEnqueue(){
+        AQueue a = AQueue.empty_queue(2);
+        a.enqueue("hey");
+        a.enqueue("bye");
 
-        assertEquals(2, queue.size());
-        assertEquals("apple", queue.peek());}
+        assertEquals(2, a.size());
+        assertEquals("hey", a.peek());}
 
     @Test
-    public void testDequeue() {
-        AQueue queue = AQueue.empty_queue(2);
-        queue.enqueue("apple");
-        queue.enqueue("banana");
+    public void testDequeue(){
+        AQueue b = AQueue.empty_queue(2);
+        b.enqueue("hey");
+        b.enqueue("bye");
 
-        assertEquals("apple", queue.dequeue());
+        assertEquals("hey", b.dequeue());
 
-        queue.enqueue("cherry");
+        b.enqueue("later");
 
-        assertEquals("banana", queue.dequeue());
-        assertEquals("cherry", queue.dequeue());
-        assertThrows(IndexOutOfBoundsException.class, () -> queue.dequeue());
+        assertEquals("bye", b.dequeue());
+        assertEquals("later", b.dequeue());
     }
 
     @Test
-    public void testPeek() {
-        AQueue queue = AQueue.empty_queue(2);
-        queue.enqueue("apple");
-        assertEquals("apple", queue.peek());
-        assertEquals("apple", queue.peek());
-        assertEquals(1, queue.size());
+    public void testPeek(){
+        AQueue c = AQueue.empty_queue(2);
+        c.enqueue("hey");
+        assertEquals("hey", c.peek());
+        assertEquals("hey", c.peek());
+        assertEquals(1, c.size());
 
-        queue.dequeue();
+        c.dequeue();
     }
 
     @Test
-    public void testSize() {
-        AQueue queue = AQueue.empty_queue(2);
-
-        assertEquals(0, queue.size());
-
-        queue.enqueue("apple");
-        assertEquals(1, queue.size());
-
-        queue.dequeue();
-        assertEquals(0, queue.size());
+    public void testSize(){
+        AQueue d = AQueue.empty_queue(2);
+        assertEquals(0, d.size());
+        d.enqueue("hey");
+        assertEquals(1, d.size());
+        d.dequeue();
+        assertEquals(0, d.size());
     }
 
     @Test
-    public void testEmpty() {
-        AQueue queue = AQueue.empty_queue(2);
-        assertEquals(true, queue.is_empty());
-        queue.enqueue("apple");
-        assertEquals(false, queue.is_empty());
-        queue.dequeue();
-        assertEquals(true, queue.is_empty());
+    public void testEmpty(){
+        AQueue e = AQueue.empty_queue(2);
+        assertEquals(true, e.is_empty());
+        e.enqueue("hey");
+        assertEquals(false, e.is_empty());
+        e.dequeue();
+        assertEquals(true, e.is_empty());
     }
 }

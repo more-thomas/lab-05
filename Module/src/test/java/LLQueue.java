@@ -1,69 +1,69 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class LLQueueTest {
+class LLQueueTest{
 
     @Test
-    public void testEnqueue() {
-        LLQueue queue = LLQueue.empty_queue();
-        queue.enqueue("apple");
-        queue.enqueue("banana");
+    public void testEnqueue(){
+        LLQueue a = LLQueue.empty_queue();
+        a.enqueue("hello");
+        a.enqueue("bye");
 
-        assertEquals(2, queue.size());
-        assertEquals("apple", queue.peek());
+        assertEquals(2, a.size());
+        assertEquals("hello", a.peek());
     }
 
     @Test
-    public void testDequeue() {
-        LLQueue queue = LLQueue.empty_queue();
-        queue.enqueue("apple");
-        queue.enqueue("banana");
+    public void testDequeue(){
+        LLQueue b = LLQueue.empty_queue();
+        b.enqueue("hello");
+        b.enqueue("bye");
 
-        assertEquals("apple", queue.dequeue());
+        assertEquals("hello", b.dequeue());
 
-        queue.enqueue("cherry");
+        b.enqueue("later");
 
-        assertEquals("banana", queue.dequeue());
-        assertEquals("cherry", queue.dequeue());
+        assertEquals("bye", b.dequeue());
+        assertEquals("later", b.dequeue());
     }
 
     @Test
-    public void testPeek() {
-        LLQueue queue = LLQueue.empty_queue();
-        queue.enqueue("apple");
-        queue.enqueue("banana");
+    public void testPeek(){
+        LLQueue c = LLQueue.empty_queue();
+        c.enqueue("hello");
+        c.enqueue("bye");
 
-        assertEquals("apple", queue.peek());
-        assertEquals("apple", queue.peek());
-        assertEquals(2, queue.size());
+        assertEquals("hello", c.peek());
+        assertEquals("hello", c.peek());
+        assertEquals(2, c.size());
 
-        queue.dequeue();
-        queue.dequeue();
+        c.dequeue();
+        c.dequeue();
     }
 
     @Test
-    public void testSize() {
-        LLQueue queue = LLQueue.empty_queue();
+    public void testSize(){
+        LLQueue d = LLQueue.empty_queue();
 
-        assertEquals(0, queue.size());
+        assertEquals(0, d.size());
 
-        queue.enqueue("apple");
-        assertEquals(1, queue.size());
+        d.enqueue("hello");
+        assertEquals(1, d.size());
 
-        queue.dequeue();
-        assertEquals(0, queue.size());
+        d.dequeue();
+        assertEquals(0, d.size());
     }
 
     @Test
-    public void testEmpty() {
-        LLQueue queue = LLQueue.empty_queue();
+    public void testEmpty(){
+        LLQueue e = LLQueue.empty_queue();
 
-        assertEquals(true, queue.is_empty());
+        assertEquals(true, e.is_empty());
 
-        queue.enqueue("apple");
-        assertEquals(false, queue.is_empty());
+        e.enqueue("hello");
+        assertEquals(false, e.is_empty());
 
-        queue.dequeue();
-        assertEquals(true, queue.is_empty());
+        e.dequeue();
+        assertEquals(true, e.is_empty());
     }
 }
