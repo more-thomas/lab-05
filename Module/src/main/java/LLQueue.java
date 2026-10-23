@@ -2,14 +2,14 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class LLQueue {
-    public record Node(String val, Node next) {}
+    public record Pair(String val, Pair next) {}
 
-    Node front;
-    Node back;
+    Pair front;
+    Pair back;
     int tot;
 
     //Constructor
-    public LLQueue(Node front, Node back, int tot) {
+    public LLQueue(Pair front, Pair back, int tot) {
         this.front = front;
         this.back = back;
         this.tot = tot;
@@ -27,7 +27,7 @@ public class LLQueue {
 
     // Add string to the end of the queue
     public void enqueue(String val){
-        back = new Node(val, back);
+        back = new Pair(val, back);
         tot++;
     }
 
@@ -39,7 +39,7 @@ public class LLQueue {
 
         if(front == null){
             while(back != null){
-                front = new Node(back.val(), front);
+                front = new Pair(back.val(), front);
                 back = back.next();
             }
         }
@@ -59,7 +59,7 @@ public class LLQueue {
 
         if(front == null){
             while(back != null) {
-                front = new Node(back.val(), front);
+                front = new Pair(back.val(), front);
                 back = back.next();
             }
         }
@@ -71,4 +71,6 @@ public class LLQueue {
     public int size(){
         return tot;
     }
+
+
 }

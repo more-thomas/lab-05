@@ -21,44 +21,41 @@ public class AQueue{
     //checks that the capacity is not 0
     public static AQueue empty_queue(int cap){
         if(cap <= 0){
-            throw new IllegalArgumentException("capacity must be positive and can't be 0.");
+            throw new IllegalArgumentException("capacity can't be a negative value");
         }
         return new AQueue(new String[cap], 0, 0);
     }
 
-    //adds a string to the end
+    //add a string to the end
     public void enqueue(String val) {
         if(tot == dat.length){
             throw new IllegalStateException("queue is full");
         }
 
-        int end = front + tot;
+        int now = front + tot;
 
-        if (end >= dat.length) {
-            end = end - dat.length;
+        if (now >= dat.length) {
+            now = now - dat.length;
         }
 
-        dat[end] = val;
+        dat[now] = val;
         tot++;
     }
 
     //Removes and returns the first string
-    public String dequeue() {
+    public String dequeue(){
         if (is_empty()) {
             throw new IndexOutOfBoundsException("queue is empty");
         }
 
         String val = dat[front];
         dat[front] = null;
-
         front++;
 
         if (front == dat.length) {
             front = 0;
         }
-
         tot--;
-
         return val;
     }
 
@@ -71,7 +68,9 @@ public class AQueue{
         return dat[front];
     }
     //returns the number of items in the queue
-    public int size() {
+    public int size(){
         return tot;
     }
+
+
 }

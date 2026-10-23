@@ -17,11 +17,9 @@ class AQueueTest {
         AQueue b = AQueue.empty_queue(2);
         b.enqueue("hey");
         b.enqueue("bye");
-
         assertEquals("hey", b.dequeue());
 
         b.enqueue("later");
-
         assertEquals("bye", b.dequeue());
         assertEquals("later", b.dequeue());
     }
@@ -30,10 +28,9 @@ class AQueueTest {
     public void testPeek(){
         AQueue c = AQueue.empty_queue(2);
         c.enqueue("hey");
-        assertEquals("hey", c.peek());
+
         assertEquals("hey", c.peek());
         assertEquals(1, c.size());
-
         c.dequeue();
     }
 
