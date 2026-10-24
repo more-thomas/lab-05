@@ -53,4 +53,19 @@ class AQueueTest {
         e.dequeue();
         assertEquals(true, e.is_empty());
     }
+
+    @Test
+    public void testEquals() {
+        AQueue first = AQueue.empty_queue(3);
+        AQueue second = AQueue.empty_queue(3);
+
+        first.enqueue("hey");
+        second.enqueue("hey");
+
+        assertEquals(true, first.equals(second));
+
+        second.enqueue("bye");
+
+        assertEquals(false, first.equals(second));
+    }
 }

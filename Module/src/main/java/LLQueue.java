@@ -72,5 +72,48 @@ public class LLQueue {
         return tot;
     }
 
+    @Override
+    public boolean equals(Object other) {
+        switch (other) {
+            case null: return false;
 
+            case LLQueue q:
+                if (tot != q.tot) {
+                    return false;
+                }
+
+                Pair first = front;
+                Pair firstBack = back;
+                Pair second = q.front;
+                Pair secondBack = q.back;
+
+                for (int i = 0; i < tot; i++) {
+                    if (first == null) {
+                        while (firstBack != null) {
+                            first = new Pair(firstBack.val(), first);
+                            firstBack = firstBack.next();
+                        }
+                    }
+
+                    if (second == null) {
+                        while (secondBack != null) {
+                            second = new Pair(secondBack.val(), second);
+                            secondBack = secondBack.next();
+                        }
+                    }
+
+                    if (!Objects.equals(first.val(), second.val())) {
+                        return false;
+                    }
+
+                    first = first.next();
+                    second = second.next();
+                }
+
+                return true;
+
+            default:
+                return false;
+        }
+    }
 }

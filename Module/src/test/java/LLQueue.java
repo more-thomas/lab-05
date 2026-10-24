@@ -66,4 +66,19 @@ class LLQueueTest{
         e.dequeue();
         assertEquals(true, e.is_empty());
     }
+
+    @Test
+    public void testEquals() {
+        LLQueue first = LLQueue.empty_queue();
+        LLQueue second = LLQueue.empty_queue();
+
+        first.enqueue("hello");
+        second.enqueue("hello");
+
+        assertEquals(true, first.equals(second));
+
+        second.enqueue("bye");
+
+        assertEquals(false, first.equals(second));
+    }
 }

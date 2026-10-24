@@ -72,5 +72,41 @@ public class AQueue{
         return tot;
     }
 
+    @Override
+    public boolean equals(Object other) {
+        switch (other) {
+            case null: return false;
+
+            case AQueue q:
+                if (tot != q.tot) {
+                    return false;
+                }
+
+                int first = front;
+                int second = q.front;
+
+                for (int i = 0; i < tot; i++) {
+                    if (!Objects.equals(dat[first], q.dat[second])) {
+                        return false;
+                    }
+
+                    first++;
+                    second++;
+
+                    if (first == dat.length) {
+                        first = 0;
+                    }
+
+                    if (second == q.dat.length) {
+                        second = 0;
+                    }
+                }
+
+                return true;
+
+            default:
+                return false;
+        }
+    }
 
 }
