@@ -4,13 +4,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class AQueueTest {
 
     @Test
-    public void testEnqueue(){
+    public void testEnqueue() {
         AQueue a = AQueue.empty_queue(2);
         a.enqueue("hey");
         a.enqueue("bye");
 
         assertEquals(2, a.size());
-        assertEquals("hey", a.peek());}
+        assertEquals("hey", a.peek());
+
+        //circular around the corner test
+        AQueue cir = new AQueue(new String[] {null, null, "a", "b"}, 2, 2);
+
+        cir.enqueue("c");
+
+        assertEquals("c", cir.dat[0]);
+        assertEquals(2, cir.front);
+        assertEquals(3, cir.size());
+
+        System.out.print(cir);
+    }
 
     @Test
     public void testDequeue(){
@@ -22,6 +34,15 @@ class AQueueTest {
         b.enqueue("later");
         assertEquals("bye", b.dequeue());
         assertEquals("later", b.dequeue());
+
+        //circular wrap around the corner test
+        AQueue queue = new AQueue(new String[] {"b", null, null, "a"}, 3, 2);
+
+        assertEquals("a", queue.dequeue());
+        assertEquals(0, queue.front);
+        assertEquals(1, queue.size());
+        assertEquals("b", queue.peek());
+
     }
 
     @Test

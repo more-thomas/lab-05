@@ -6,6 +6,7 @@ public class AQueue{
     int front;
     int tot;
 
+
     // Constructor
     public AQueue(String[] dat, int front, int tot){
         this.dat = dat;
