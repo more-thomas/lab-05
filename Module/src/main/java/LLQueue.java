@@ -22,7 +22,7 @@ public class LLQueue {
 
     // Make an empty queue
     public static LLQueue empty_queue(){
-        return new LLQueue(null, null, 0);
+        return new LLQueue(null, null,0);
     }
 
     // Add string to the end of the queue
@@ -32,6 +32,7 @@ public class LLQueue {
     }
 
     //remove string from queue
+    //includes reverse and refill in degueue
     public String dequeue(){
         if(is_empty()){
             throw new IndexOutOfBoundsException("The queue is empty.");
@@ -72,6 +73,7 @@ public class LLQueue {
         return tot;
     }
 
+    //should have used instanceOf
     @Override
     public boolean equals(Object other) {
         switch (other) {
